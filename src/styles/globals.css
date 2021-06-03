@@ -303,9 +303,6 @@ footer {
     grid-gap: .5em;
     margin-top: .5em;
   }
-  .card .top img {
-    height: 100px;
-  }
   .card .bottom {
     font-size: 80%;
   }
