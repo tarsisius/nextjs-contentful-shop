@@ -14,6 +14,7 @@ function Product({ product }) {
                                 alt={image[0].fields.title}
                                 width={image[0].fields.file.details.image.width}
                                 height={image[0].fields.file.details.image.height}
+                                objectFit="contain"
                             />
                         </div>
                         <div className="bottom">

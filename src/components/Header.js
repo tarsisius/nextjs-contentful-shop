@@ -1,9 +1,10 @@
-import Link from "next/link"
+import Link from 'next/link'
+import Image from 'next/image'
 
 function Header() {
     return (
         <header>
-            <div className="container">
+            <div className="header container">
                 <h1 className="logo">
                     <Link href="/">
                         <a>
@@ -12,6 +13,9 @@ function Header() {
                         </a>
                     </Link>
                 </h1>
+                <div className="search">
+                    <Image src="/assets/svg/search.svg" height={18} width={18} />
+                </div>
             </div>
         </header>
     )
