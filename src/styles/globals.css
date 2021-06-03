@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url("https://fonts.googleapis.com/css2?family=Poppins");
 
 :root {
-  --card-shadow: 0 10px 20px 0 rgb(30 30 30 / 7%);
   --background-light: #fafafc;
   --button-background-light: #8492a6;
   --button-color-light: #fff;
@@ -11,7 +10,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--background-light);
 }
 
@@ -44,7 +43,7 @@ pre {
   margin: 0;
 }
 
-button {
+/* button {
   outline: none;
   background-color: var(--button-background-light);
   color: var(--button-color-light);
@@ -58,11 +57,17 @@ button {
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
+} */
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   width: 100%;
-  max-width: 760px;
+  max-width: 860px;
   padding: 0 2em;
   margin: auto;
 }
@@ -74,6 +79,10 @@ header .container .logo {
   margin: 0;
   text-align: center;
   font-size: 3em;
+}
+.img-logo {
+  height: .7em;
+  margin-right: .25em;
 }
 
 /* index */
@@ -90,7 +99,6 @@ header .container .logo {
   cursor: pointer;
   overflow: hidden;
   background: var(--background-light);
-  box-shadow: var(--card-shadow);
 }
 
 .card .top {
@@ -102,19 +110,22 @@ header .container .logo {
 }
 
 .card .top img {
-  height: 100px;
+  height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
 .card .bottom {
-  padding: 0.8em;
-  margin: 0;
+  text-align: center;
 }
 
-.card .bottom h3 {
+.card .bottom h4 {
   margin-top: 0;
   margin-bottom: 0.5em;
+}
+
+.card .bottom span {
+  font-size: 0.8em;
 }
 
 /* Pagination */
@@ -128,24 +139,176 @@ header .container .logo {
   margin: 0 0.8em;
   background-color: #fff;
   color: inherit;
-  box-shadow:var(--card-shadow);
 }
 
 /* Detail */
+.detail {
+  display: flex;
+  flex-direction: row;
+}
 
-.cover-image {
+.left {
+  padding: 1em;
+  width: 40%;
+}
+.right {
+  padding: 1em;
+  width: 60%;
+  display: block;
+}
+
+.main-img {
   width: 100%;
-}
-.post-body__inner {
-  font-size: 1em;
-  line-height: 1.8;
-  font-weight: normal;
+  height: 18em;
+  position: relative;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5em;
 }
 
+.slide-img {
+  height: 4em;
+  display: flex;
+  position: relative;
+}
+
+.small-img {
+  scroll-behavior: smooth;
+  display: flex;
+  overflow: hidden;
+}
+
+.small-img span {
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.7;
+  display: inline-flex;
+  margin: 0 5px;
+  box-sizing: border-box;
+  width: 25%;
+  height: 4em;
+  vertical-align: middle;
+  border: 1px transparent;
+  transition: 0.5s;
+  transform: 0.5s;
+}
+
+.small-img span.active {
+  opacity: 1;
+  border: 1px solid #ddd;
+}
+
+.scroll-button {
+  z-index: 10;
+  position: absolute;
+  height: 4.8em;
+  width: 1.5em;
+  border: none;
+  background-color: rgba(221, 214, 254, 0.25);
+  cursor: pointer;
+}
+
+.scroll-button:hover {
+  background-color: rgba(221, 214, 254, 0.75);
+}
+
+.scroll-button svg {
+  display: block;
+}
+
+.left-scroll {
+  left: 0;
+}
+
+.right-scroll {
+  right: 0;
+}
+
+.data {
+  margin-bottom: 1em;
+}
+
+.size {
+  margin-top: 1em;
+}
+
+.size label {
+  display: block;
+}
+.size-item {
+  display: block;
+  margin-top: .75em;
+}
+.size-item span {
+  display: inline-block;
+  text-transform: uppercase;
+  border: 1px solid #086fcf;
+  color: #086fcf;
+  cursor: pointer;
+  height: 2em;
+  padding: 8px;
+  text-align: center;
+  line-height: 1;
+  width: 2em;
+  margin-right: .5em;
+}
+
+.buy-button {
+  width: 100%;
+  font-weight: 600;
+  line-height: 40px;
+  font-size: 12px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  padding: 10px 20px;
+  box-shadow: 0 10px 15px rgb(53 29 136 / 20%);
+  background: linear-gradient(90deg, #9f51e8 0%, #351db8 100%);
+}
 /* Footer */
 
 footer {
   margin-top: 2em;
   padding: 2em 0;
   text-align: center;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 800px) {
+  .index-wrapper {
+    grid-gap: 1em;
+    margin-top: 1em;
+  }
+}
+@media screen and (max-width: 600px) {
+  .index-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: .75em;
+    margin-top: .75em;
+  }
+  .card .top img {
+    height: 150px;
+  }
+  .card .bottom {
+    font-size: 90%;
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .index-wrapper {
+    grid-gap: .5em;
+    margin-top: .5em;
+  }
+  .card .top img {
+    height: 100px;
+  }
+  .card .bottom {
+    font-size: 80%;
+  }
+  .detail{
+    flex-direction: column;
+  }
+  .left,.right {
+    width: 100%;
+  }
 }

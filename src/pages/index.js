@@ -1,49 +1,36 @@
 import Head from 'next/head'
-import Post from '@components/Post'
-import Pagination from '@components/Pagination'
-import { postsPerPage } from '@libs/config'
-import { getAllPosts } from '@libs/md'
+import { createClient } from 'contentful'
+import Product from '@components/Product'
 
-export default function Home({ posts, prevPosts, nextPosts }) {
+export async function getStaticProps() {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  })
+
+  const res = await client.getEntries({ content_type: 'product' })
+
+  return {
+    props: {
+      products: res.items
+    }
+  }
+}
+
+export default function Home({ products }) {
   return (
     <>
       <Head>
-        <title>Aryo</title>
+        <title>Katalog</title>
       </Head>
-
+      
       <section className="index-wrapper">
-        {posts.map((post, key) => (
-          <Post key={key} {...post} />
+        {products.map(product => (
+          <Product key={product.sys.id} product={product} />
         ))}
       </section>
-
-      <Pagination prev={prevPosts} next={nextPosts} />
     </>
   )
 }
 
-export async function getStaticProps() {
-  const posts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-    'tags'
-  ])
-
-  const startIndex = 0
-  const endIndex = postsPerPage
-  const prevPosts = null
-  const nextPosts = endIndex >= posts.length ? null : 2
-
-  return {
-    props: {
-      posts: posts.slice(startIndex, endIndex),
-      prevPosts,
-      nextPosts
-    },
-  }
-}
 
