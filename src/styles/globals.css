@@ -302,9 +302,6 @@ footer {
   }
 }
 @media screen and (max-width: 400px) {
-  .container {
-    padding: 0 0.5em;
-  }
   .index-wrapper {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.5em;
