@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins");
 
 :root {
-  --background-light: #fafafc;
+  --background-light: #fff;
   --button-background-light: #8492a6;
   --button-color-light: #fff;
 }
@@ -295,6 +295,10 @@ footer {
   
 }
 @media screen and (max-width: 400px) {
+  .container {
+    max-width: 860px;
+    padding: 0 .5em;
+  }
   .index-wrapper {
     grid-gap: .5em;
     margin-top: .5em;
