@@ -72,12 +72,13 @@ pre {
 }
 
 /*header*/
-
+header {
+  border-bottom: 1px solid #ddd;
+}
 .header {
   display: flex;
   justify-content: space-between;
-  padding: .25em;
-  border-bottom: 1px solid #ddd;
+  padding: 0.25em;
 }
 .logo {
   display: flex;
